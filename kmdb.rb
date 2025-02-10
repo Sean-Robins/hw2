@@ -306,7 +306,6 @@ role["actor_id"] = hathaway["id"]
 role["character_name"] = "Selina Kyle"
 role.save
 
-
 # check
 #all_roles = Role.all
 #puts all_roles.inspect
