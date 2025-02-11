@@ -134,8 +134,8 @@ movie["studio_id"] = warner["id"]
 movie.save
 
 # check
-# all_movies = Movie.all
-# puts all_movies.inspect
+# all_movies_check = Movie.all
+# puts all_movies_check.inspect
 
 
 # Populating actors table
@@ -318,13 +318,42 @@ puts ""
 # Query the movies data and loop through the results to display the movies output.
 # TODO!
 
+all_movies = Movie.all
+#puts all_movies.inspect
+
+for a in all_movies
+
+    movie_title = a["title"]
+    movie_year = a["year_released"]
+    movie_rating = a["rated"]
+    studio = Studio.find_by({"id" => a["studio_id"]})
+    studio_name = studio["name"]
+
+    puts "#{movie_title} #{movie_year} #{movie_rating} #{studio_name}"
+
+
+end
+
 # Prints a header for the cast output
 puts ""
 puts "Top Cast"
 puts "========"
 puts ""
 
+
 # Query the cast data and loop through the results to display the cast output for each movie.
 # TODO!
 
+all_roles = Role.all
 
+for b in all_roles
+
+    movie = Movie.find_by({"id" => b["movie_id"]})
+    movie_title = movie["title"]
+    actor = Actor.find_by({"id" => b["actor_id"]})
+    actor_name = actor["name"]
+    role_name = b["character_name"]
+
+    puts "#{movie_title} #{actor_name} #{role_name}"
+
+end
